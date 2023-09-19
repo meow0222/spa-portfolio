@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    
+    <body>
+        <header>
+            <div class="header-logo">
+                <a href="../index.html"><img class="header-img" src="../imgs/logo-1.png" alt="Brand logo"></a>
+                <div class="header-icons pc-menu">
+                    <img class="header-icon" src="../imgs/search.svg" alt="">
+                    <img class="header-icon" src="../imgs/shopping_cart.svg" alt="">
+                </div>
+                <div class="sp-menu">
+                    <span class="material-icons" id="open">menu</span>
+                </div>
+            </div>
+            <div>
+                <nav class="pc-menu">
+                    <ul class="nav-links">
+                        <li><a href="../pages/product.html">Product</a></li>
+                        <li><a href="../pages/features.html">Features</a></li>
+                        <li><a href="../pages/contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="overlay">
+            <span class="material-icons" id="close">close</span>
+            <div class="sp-icons">
+                <img class="sp-icon" src="../imgs/search.svg" alt="">
+                <img class="sp-icon" src="../imgs/shopping_cart.svg" alt="">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../pages/product.html">Product</a></li>
+                    <li><a href="../pages/features.html">Features</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="sp-footer">
+                <div class="sp-brand-tittle">
+                    <img src="../imgs/logo-2.png" alt="Brand tittle">
+                </div>
+                <div class="sp-sm">
+                    <ul>
+                        <li><a href="#"><img src="../imgs/instagram.svg" alt="My Instagram account"></a></li>
+                        <li><a href="#"><img src="../imgs/twitter.svg" alt="My Twitter account"></a></li>
+                        <li><a href="#"><img src="../imgs/facebook.svg" alt="My Linkedin account"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- MAIN -->
+        <main><!-- ←This section has 2 block containers. -->
+            <div class="product-container">
+                <!-- <aside class="side-menu">
+                        <ul>
+                            <li><a href="">Tees</a></li>
+                            <li><a href="">Sweats</a></li>
+                            <li><a href="">Outerwear</a></li>
+                            <li><a href="">Headwear</a></li>
+                            <li><a href="">Accessories</a></li>
+                        </ul>
+                    </aside> -->
+                <section class="product-section">
+                    <div>
+                        <img class="product" src="../imgs/crestfactor-4.jpg" alt="aaa">
+                        <p>Sweat</p>
+                        <p>CAD: 60$</p>
+    
+                    </div>
+                    <div>
+                        <img class="product" src="../imgs/crestfactor-5.jpg" alt="aaa">
+                        <p>Sweat</p>
+                        <p>CAD: 60$</p>
+                    </div>
+                    <div>
+                        <img class="product" src="../imgs/crestfactor-13.jpg" alt="aaa">
+                        <p>Hoodie</p>
+                        <p>CAD: 65$</p>
+    
+                    </div>
+                    <div>
+                        <img class="product" src="../imgs/crestfactor-14.jpg" alt="aaa">
+                        <p>Hoodie</p>
+                        <p>CAD: 65$</p>
+                    </div>
+                    <div>
+                        <img class="product" src="../imgs/crestfactor-24.jpg" alt="aaa">
+                        <p>Tee</p>
+                        <p>CAD: 45$</p>
+                    </div>
+                    <div>
+                        <img class="product" src="../imgs/crestfactor-25.jpg" alt="aaa">
+                        <p>Tee</p>
+                        <p>CAD: 45$</p>
+                    </div>
+                    <div>
+                        <img class="product" src="../imgs/crestfactor-34.jpg" alt="aaa">
+                        <p>Tee</p>
+                        <p>CAD: 45$</p>
+                    </div>
+                    <div>
+                        <img class="product" src="../imgs/crestfactor-23.jpg" alt="aaa">
+                        <p>Cap</p>
+                        <p>CAD: 25$</p>
+                    </div>
+                </section>
+            </div>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <div class="carousel-container">
+                        <button class="prev" onclick="prevSlide()">&#10094;</button>
+                        <div class="carousel">
+                        </div>
+                        <button class="next" onclick="nextSlide()">&#10095;</button>
+                    </div>
+                    <div class="text-sec">
+                        <p id="modal-text"></p>
+                        <p id="modal-size"></p>
+                        <p id="modal-price"></p>
+                        <p id="modal-description"></p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        
+                        <div class="img-sec">
+                            <img id="modal-image" src="" alt="our product">
+                        </div>
+                        <div class="text-sec">
+                            <p id="modal-text"></p>
+                            <p id="modal-price"></p>
+                            <p id="modal-description"></p>
+                        </div>
+                    </div>
+                </div> -->
+        </main>
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-container"><!-- ←This section has 3 block containers. -->
+                <div class="brand-tittle">
+                    <!-- <img class="footer-logo" src="imgs/logo-2.png" alt="Brand logo"> -->
+                    <img class="footer-logo" src="../imgs/logo-3.png" alt="Brand tittle">
+                </div>
+                <div class="footer-sm">
+                    <ul>
+                        <li><a href="#"><img src="../imgs/instagram.svg" alt="My Instagram account"></a></li>
+                        <li><a href="#"><img src="../imgs/twitter.svg" alt="My Twitter account"></a></li>
+                        <li><a href="#"><img src="../imgs/facebook.svg" alt="My Linkedin account"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <p class="copyright">Copyright © CREST FACTOR</p>
+            </div>
+        </footer>
+        <script src="../js/main.js"></script>
+    </body>
+</html>

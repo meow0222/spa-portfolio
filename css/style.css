@@ -1,0 +1,815 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+    list-style-type: none;
+    font-weight: normal;
+    text-decoration: none;
+    font-family: 'Kanit', sans-serif;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+body {
+    background-color: #F4F5F6;
+}
+
+html { 
+    scroll-behavior: smooth;
+}
+
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background-color: #F4F5F6;
+    width: 100%;
+    z-index: 900;
+}
+
+nav {
+    width: 100vw;
+    border-top: solid 0.5px #d8d8d8;
+    border-bottom: solid 0.5px #d8d8d8;
+}
+
+main {
+    padding: 0 1rem;
+}
+
+/* --------------------------------------------HEADER SECTION------------------------------------------- */
+
+/* Flex container */
+.header-logo {
+    height: 70px;
+}
+
+.header-logo a {
+    display: inline-block;
+}
+
+.header-img {
+    width: 130px;
+}
+
+.header-icons {
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+}
+
+.header-icon {
+    width: 24px;
+    margin-left: 5px
+}
+
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+
+
+.nav-links a {
+    font-weight: 500;
+    color: #333;
+}
+
+.nav-links a:hover {
+    color: #9cfccf;
+    text-shadow:
+            1px 1px 0px #000, -1px -1px 0px #000,
+            -1px 1px 0px #000, 1px -1px 0px #000,
+            1px 0px 0px #000, -1px 0px 0px #000,
+            0px 1px 0px #000, 0px -1px 0px #000;
+    }
+
+
+
+
+
+/* --------------------------------------------LANDING SECTION------------------------------------------- */
+
+.main-section {
+    height: 88vh;
+    margin-bottom: 1rem;
+}
+
+.main-image {
+    width: 95%;
+    height: 68vh;
+    margin: 0rem auto 1rem;
+    top: 8rem;
+    position: relative;
+    overflow: hidden;
+}
+
+
+#changePic {
+    position: absolute;
+    width: 100%;
+    object-fit: contain;
+}
+
+.fade-in-out {
+    animation: fadeInOut 5s ease-in-out infinite; 
+    opacity: 0;
+}
+
+@keyframes fadeInOut {
+    0% {
+		opacity: 0;
+	}
+	
+	25% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 1;
+	}
+
+	75% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+
+
+
+
+/* --------------------------------------------PRODUCTS SECTION------------------------------------------- */
+
+.product-container {
+    margin: 9rem 1rem 0;
+}
+
+.side-menu {
+    width: 100vw;
+    position: fixed;
+    top: 7rem;
+    left: 0;
+    padding: 10px;
+    background-color: #F4F5F6;
+    border-top: solid 0.5px #d8d8d8;
+    
+}
+
+.side-menu ul{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+.side-menu a{
+    color:rgb(177, 177, 177);
+    font-size: 14px;
+}
+
+.side-menu a:hover {
+    color: #31aae2;
+    font-weight: bold;
+}
+
+.product-section {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    gap: 5rem 1rem;
+    justify-content: space-around;
+    padding-bottom: 3rem;
+}
+
+.product {
+    width: 300px;
+    height: 350px;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
+    background-color: #FFF;
+    z-index: -2;
+    cursor: pointer;
+}
+
+.button {
+    background: lightblue;
+    color: #fff;
+    padding: 0 2em;
+    border: 0;
+    width: 500px;
+    height: 100px;
+    font-size: 45px;
+    border-radius: 5px;
+    font-weight: 900;
+    position: relative;
+    left: 400px;
+    top: 260px;
+    font-family: serif;
+}
+
+.button:hover {
+    background: lightcoral;
+    cursor: pointer;
+}
+
+
+
+/* モーダルの背景と全体のスタイル */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* モーダルコンテンツ */
+.modal-content {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    gap: 2rem;
+    background-color: #fefefe;
+    margin: 4rem 15rem;
+    padding: 20px;
+    position: relative;
+}
+
+
+
+.carousel {
+    overflow: hidden;
+    width: 30vw;
+    height: 70vh;
+}
+
+/* カルーセル内の画像 */
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 画像をエリアにフィットさせる */
+}
+
+
+/* カルーセルコンテナ */
+.carousel-container {
+    display: flex;
+    border: #6441a5 0.5px solid;
+
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    padding: 10px;
+    color: #333;
+    border: none;
+    font-size: 24px;
+}
+
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.text-sec {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#modal-text {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#modal-price {
+    font-size: 16px;
+    color: #555;
+}
+
+#modal-description {
+    font-size: 14px;
+    color: #777;
+}
+
+
+
+
+/* --------------------------------------------FEATURES SECTION------------------------------------------- */
+.features-container {
+    margin-top: 7rem;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+}
+
+
+.features {
+    display: grid;
+    grid-auto-columns: 2fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    'six one one two two seven'
+    'three three four four five five';
+    gap: 2rem;
+}
+
+
+
+.item {
+    text-align: center;
+    perspective:600px;
+    transition: box-shadow 0.6s;
+}
+
+.item img {
+    filter: saturate(0%);
+    transition:0.6s;
+}
+
+
+.item img:hover{
+    filter: saturate(100%) drop-shadow(2px 2px 2px #9cfccf );    
+    transform: rotateY(360deg);
+}
+
+.item:nth-child(1){
+    grid-area: one;
+}
+
+.item:nth-child(2){
+    grid-area: two;
+
+}
+
+.item:nth-child(3){
+    grid-area: three;
+
+}
+
+.item:nth-child(4){
+    grid-area: four;
+
+}
+
+
+.item:nth-child(5){
+    grid-area: five;
+
+}
+
+.item:nth-child(6){
+    grid-area: six;
+}
+
+.item:nth-child(7){
+    grid-area: seven;
+}
+
+.item img {
+    width: 77%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.item p {
+    font-size: 12px;
+}
+
+
+/* --------------------------------------------CONTACT SECTION------------------------------------------- */
+.contact-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 7rem;
+    padding: 70px 2rem;
+}
+
+.contact-container h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 4rem;
+}
+
+.form-field {
+    border-bottom: 0.5px solid #333;
+}
+
+.form-btn {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+.map {
+    width: 50vw;
+    height: 100%;
+}
+
+input[type="text"] {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    background: none;
+}
+
+input[type="email"] {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    background: none;
+}
+
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+
+button,
+input[type="submit"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+
+/* --------------------------------------------FOOTER SECTION------------------------------------------- */
+
+/* Flex container */
+.footer-container {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    border-top: solid 0.5px #d8d8d8;
+}
+
+.footer-logo {
+    height: 40px;
+}
+
+/* Flex box and items */
+.brand-tittle, .footer-sm{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.brand-tittle {
+    gap: 1rem;
+}
+
+.brand-tittle h1 {
+    font-size: 16px;
+}
+
+.footer-sm ul {
+    display: flex;
+    padding-top: 10px;
+    position: relative;
+}
+
+.footer-sm img{
+    width: 25px;
+    margin-right: 1rem;
+}
+
+.footer-sm li:hover{
+    transform: translateY(-2px);
+    transition: .3s;
+}
+
+.footer-sm li a {
+    display: inline-block;
+}
+
+.copyright {
+    font-size: 10px;
+    text-align: center;
+}
+
+
+.pc-menu {
+    display: block;
+}
+
+
+
+.sp-menu {
+    display: none;
+}
+
+
+.overlay {
+    display: none;
+}
+
+
+
+@media (max-width: 767px) {
+    
+/* ----------------------------------- HEADER ----------------------------------- */
+
+
+    header {
+        border-bottom: solid 0.5px #d8d8d8;
+    }
+
+
+    .sp-menu {
+        display: block;
+    }
+
+    .sp-menu #open {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        font-size: 32px;
+        cursor: pointer;
+    }
+
+    .sp-menu #open.hide {
+        display: none;
+    }
+
+    .overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: rgba(255, 255, 255, 0.95);
+        text-align: center;
+        padding: 4rem 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .6s;
+        z-index: 1000;
+    }
+
+    .overlay.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .overlay #close {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        font-size: 32px;
+        cursor: pointer;
+    }
+
+    .overlay ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 24px;
+    }
+
+    .overlay li {
+        margin-top: 24px;
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity .3s, transform .3s;
+    }
+
+    .overlay img {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity .3s, transform .3s;
+    }
+
+    .overlay.show li {
+        opacity: 1;
+        transform: none;
+    }
+
+    .overlay.show li:nth-child(1) {
+        transition-delay: .1s;
+    }
+
+    .overlay.show li:nth-child(2) {
+        transition-delay: .2s;
+    }
+
+    .overlay.show li:nth-child(3) {
+        transition-delay: .3s;
+    }
+
+    .overlay.show img {
+        opacity: 1;
+        transition-delay: .4s;
+    }
+
+    .sp-icons {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+    }
+
+    .sp-icon {
+        width: 30px;
+        margin-left: 1rem;
+    }
+
+    .pc-menu {
+        display: none;
+    }
+
+    .sp-footer {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .sp-brand-tittle img {
+        width: 85px;
+    }
+
+    .sp-sm ul {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .sp-sm img {
+        width: 30px;
+    }
+
+    .header-logo {
+        display: flex;
+        justify-content: space-between;
+    }
+
+/* ----------------------------------- LANDING ----------------------------------- */
+
+
+    .main-image{
+        height: 80%;
+    }
+
+    #changePic {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+
+
+/* ----------------------------------- PRODUCT ----------------------------------- */
+
+    .side-menu {
+        border: none;
+    }
+
+    .modal-content {
+        flex-direction: column;
+        margin: 3rem 1rem;
+        gap: 0;
+        padding: 3rem 1rem;
+
+    }
+
+    .carousel {
+        width: 100%;
+        height: 300px;
+    }
+
+    .carousel img {
+        object-fit: contain;
+    }
+
+    .text-sec {
+        margin-top: 1rem;
+    }
+    
+/* ----------------------------------- FEATURES ----------------------------------- */
+
+    .features-container {
+        border: none;
+    }
+
+    .features {
+        grid-template-areas: 
+        'one'
+        'two'
+        'three'
+        'four'
+        'five'
+        'six'
+        'seven';
+        justify-items: center;
+        align-items: center;
+        gap: 3rem;
+    }
+    
+
+    .item {
+        width: 100%;
+    }
+
+    .contact-container {
+        border: none;
+    }
+    
+
+    .map {
+        margin-top: 4rem;
+        width: 100%;
+        height: 300px;
+    }
+}
+
+/* タブレット向けのスタイル */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .main-image{
+        height: 80%;
+    }
+
+    #changePic {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+
+
+
+    /* ----------------------------------- PRODUCT ----------------------------------- */
+
+    .side-menu {
+        border: none;
+    }
+
+    .modal-content {
+        margin: 6rem 3rem;
+        padding: 3rem 1rem;
+
+    }
+
+    .carousel {
+        height: 300px;
+    }
+
+    .carousel img {
+        object-fit: contain;
+    }
+
+    .text-sec {
+        margin-top: 1rem;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
