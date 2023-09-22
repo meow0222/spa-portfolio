@@ -1,13 +1,18 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-    $('#login-btn').click(function(e){
+    $('#login-btn').click(function (e) {
         e.preventDefault();
 
         const username = $("input[type='text']").val();
-        const password = $("input[type='password']").val();
+        const password = $("input[type='password']").val()
 
-        console.log("Username:", username);
-        console.log("Password:", password);
+        sessionStorage.setItem('username', username);
+        const storedUsername = sessionStorage.getItem('username');
+        if (storedUsername) {
+            const userNameHeader = document.getElementById('userName');
+            userNameHeader.innerText = "Username: " + storedUsername;
+        }
+        
 
 
         $.ajax({
@@ -20,27 +25,34 @@ $(document).ready(function() {
                 username: username,
                 password: password
             },
-            success: function(response) {
+            success: function (response) {
                 // if a success response is received, print it here:
-                console.log("Response:", response); 
-
+                console.log("Response:", response);
+                // const userName = document.getElementById('userName');
+                // userName.innerText = username;
                 if (response === "Login Successful") {
                     // Redirect to home.html
                     console.log("if condition for Login Successful triggered");
-                    window.location.href = "./index.html";
+                    // window.location.href = "./index.html";
+                    // const usernameFromHeader = xhr.getResponseHeader('username');
+                    // const userNameHeader = $('#userName');
+                    // userNameHeader.text("Username: " + usernameFromHeader);
+                    
+                    
+        
                 } else {
                     // Display "Login Failed"
                     alert(response);
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.error("Error:", error);
             }
         });
 
     });
 
-    $('#signup-btn').click(function(e){
+    $('#signup-btn').click(function (e) {
         e.preventDefault();
 
         const username = $("input[type='text']").val();
@@ -59,11 +71,11 @@ $(document).ready(function() {
                 username: username,
                 password: password
             },
-            success: function(response) {
+            success: function (response) {
                 // if a success response is received, print it here:
-                console.log("Response:", response); 
+                console.log("Response:", response);
             },
-            error: function(error) {
+            error: function (error) {
                 console.error("Error:", error);
             }
         });
