@@ -80,5 +80,54 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#update-btn').click((e) => {
+        e.preventDefault();
+
+        const username = $("input[type='text']").val();
+        const newPassword = $("#updatePassword").val();
+
+        console.log("Username:", username);
+        console.log("New Password:", newPassword);
+
+        $.ajax({
+            url: "http://localhost:3000/login",
+            method: 'PUT',
+            headers: {
+                "task": "updateUser" // custom header
+            },
+            data: {
+                username: username,
+                newPassword: newPassword
+            },
+            success: function(response) {
+                // if a success response is received, print it here:
+                console.log("Response:", response); 
+            },
+            error: function(error) {
+                alert("Error:", error);
+            }
+        });
+
+        // axios({
+        //     url: "http://localhost:3000/login",
+        //     method: 'PUT',
+        //     headers: {
+        //         "task": "updateUser" // custom header
+        //     },
+        //     data: {
+        //         username: username,
+        //         newPassword: newPassword
+        //     },
+        //     success: function(response) {
+        //         // if a success response is received, print it here:
+        //         console.log("Response:", response); 
+        //     },
+        //     error: function(error) {
+        //         alert("Error:", error);
+        //     }
+        // });
+    });
+
 });
 
