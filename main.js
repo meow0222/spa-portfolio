@@ -6,12 +6,12 @@ $(document).ready(function () {
         const username = $("input[type='text']").val();
         const password = $("input[type='password']").val()
 
-        sessionStorage.setItem('username', username);
-        const storedUsername = sessionStorage.getItem('username');
-        if (storedUsername) {
-            const userNameHeader = document.getElementById('userName');
-            userNameHeader.innerText = "Username: " + storedUsername;
-        }
+        // sessionStorage.setItem('username', username);
+        // const storedUsername = sessionStorage.getItem('username');
+        // if (storedUsername) {
+        //     const userNameHeader = document.getElementById('userName');
+        //     userNameHeader.innerText = "Username: " + storedUsername;
+        // }
         
 
 
@@ -39,7 +39,7 @@ $(document).ready(function () {
                     // userNameHeader.text("Username: " + usernameFromHeader);
                     
                     
-        
+
                 } else {
                     // Display "Login Failed"
                     alert(response);

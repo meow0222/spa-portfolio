@@ -373,7 +373,7 @@ header {
 
 
 .item img:hover{
-    filter: saturate(100%) drop-shadow(2px 2px 2px #9cfccf );    
+    filter: saturate(100%);    
     transform: rotateY(360deg);
 }
 
@@ -454,7 +454,7 @@ header {
 }
 
 .map {
-    width: 50vw;
+    width: 40vw;
     height: 100%;
 }
 

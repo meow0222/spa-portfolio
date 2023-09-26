@@ -12,10 +12,10 @@
 
     </head>
 
-    <body>
+    <body id="top">
         <header class="pb-4 justify-between">
             <div class="header-logo">
-                <a href="index.html"><img class="header-img" src="imgs/logo-1.png" alt="Brand logo"></a>
+                <a href="#top"><img class="header-img" src="imgs/logo-1.png" alt="Brand logo"></a>
                 <div class="sp-menu">
                     <span class="material-icons" id="open">menu</span>
                 </div>
@@ -23,9 +23,9 @@
             <div>
                 <nav class="pc-menu">
                     <ul class="nav-links pb-14">
-                        <li><a href="pages/product.html">Product</a></li>
-                        <li><a href="pages/features.html">Features</a></li>
-                        <li><a href="pages/contact.html">Contact</a></li>
+                        <li><a href="#productContainer">Product</a></li>
+                        <li><a href="#featuresContainer">Features</a></li>
+                        <li><a href="#contactContainer">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -85,9 +85,9 @@
                         <input type="text" placeholder="Username" class="w-full p-2 border rounded-md">
                         <input type="password" placeholder="Password" class="w-full p-2 border rounded-md">
                             <input id="updatePassword" type="text" placeholder="New Password" class="w-full p-2 border rounded-md">
-                            <button id="update-btn" class="w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Update Password</button>  
                         <button id="login-btn" class="w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Login</button>  
                         <button id="signup-btn" class="w-full p-2 bg-green-500 text-white rounded-md hover:bg-green-600">Sign Up</button>
+                        <button id="update-btn" class="w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Update Password</button>  
                     </div>
                 </div>
             </div>    
@@ -97,7 +97,7 @@
 
 
 
-            <div class="product-container">
+            <div id="productContainer" class="product-container">
                 <aside class="side-menu">
                         <ul>
                             <li><a href="">Tees</a></li>
@@ -167,7 +167,7 @@
                     </div>
                 </div>
             </div>
-            <div class="features-container">
+            <div id="featuresContainer" class="features-container">
                 <div class="features">
                     <div class="item">
                         <img src="imgs/crestfactor-8.png" alt="">
@@ -200,7 +200,7 @@
                 </div>
             </div>
 
-            <div class="contact-container">
+            <div id="contactContainer" class="contact-container">
                 <div class="form-section">
                     <h2>CONTACT US</h2>
                     <form class="contact-form">
