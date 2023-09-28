@@ -1,186 +1,163 @@
-// {
-//     document.addEventListener('DOMContentLoaded', function () {
-//         const slideImg = ["imgs/crestfactor-17.jpg", "imgs/crestfactor-29.jpg", "imgs/crestfactor-36.jpg"];
-//         let changePic = document.getElementById('changePic');
-//         let count = 0;
-//         let intervalId;
-
-//         function slide() {
-//             changePic.classList.remove('fade-in-out'); 
-//             setTimeout(() => {
-//                 changePic.src = slideImg[count];
-//                 changePic.classList.add('fade-in-out'); 
-//             }, 2000); // クラスを追加する前に1秒待機
-//             count = (count + 1) % slideImg.length;
-//         }
-
-//         function startSlideShow() {
-//             intervalId = setInterval(slide, 5000); 
-//         }
-
-//         function stopSlideShow() {
-//             clearInterval(intervalId);
-//         }
-
-//         function isSpecialPage() {
-//             return window.location.pathname.includes('index');
-//         }
-
-//         if (isSpecialPage()) {
-//             startSlideShow();
-//         }
-
-//         document.addEventListener('visibilitychange', function () {
-//             if (document.hidden) {
-//                 stopSlideShow();
-//             } else if (isSpecialPage()) {
-//                 startSlideShow();
-//             }
-//         });
-//     });
-// }
-
 {
-    $(document).ready(function() {
+    $(document).ready(function () {
         const slideImg = ["imgs/crestfactor-17.jpg", "imgs/crestfactor-29.jpg", "imgs/crestfactor-36.jpg"];
         let count = 0;
         let intervalId;
-    
+
         function slide() {
             $('#changePic').removeClass('fade-in-out');
-            setTimeout(function() {
+            setTimeout(function () {
                 $('#changePic').attr('src', slideImg[count]);
                 $('#changePic').addClass('fade-in-out');
             }, 2000);
             count = (count + 1) % slideImg.length;
         }
-    
+
         function startSlideShow() {
             intervalId = setInterval(slide, 5000);
         }
-    
+
         function stopSlideShow() {
             clearInterval(intervalId);
         }
-    
+
         function isSpecialPage() {
             return window.location.pathname.includes('index');
         }
-    
+
         if (isSpecialPage()) {
             startSlideShow();
         }
-    
-        $(document).on('visibilitychange', function() {
+
+        $(document).on('visibilitychange', function () {
             if (document.hidden) {
                 stopSlideShow();
             } else if (isSpecialPage()) {
                 startSlideShow();
             }
         });
+        
     });
 }
 
 
 
-{
-    let currentSlide = 0;
-    const carousel = document.querySelector('.carousel');
-    const modalText = document.getElementById('modal-text');
-    const modalSize = document.getElementById('modal-size')
-    const modalPrice = document.getElementById('modal-price');
-    const modalDescription = document.getElementById('modal-description');
-    const productImages = document.querySelectorAll('.product');
 
 
 
-    const products = [
-        {
-            images: [
-                'imgs/crestfactor-4.jpg',
-                'imgs/crestfactor-6.jpg',
-                'imgs/crestfactor-8.jpg'
-            ],
-            name: 'Sweat',
-            size: 'S  M  L  XL',
-            price: 'CAD: 60$',
-            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis vitae ea, facere commodi nam magni eos esse ullam dignissimos molestias! Repellat architecto necessitatibus voluptatibus libero facilis quos consequuntur minus maiores.'
+
+var products;
+
+function fetchProductData() {
+    $.ajax({
+        url: 'http://localhost:3000/data/products',
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            products = data.products; // 商品データの配列
+            displayProducts(); // 商品情報を表示
         },
-
-        {
-            images: [
-                'imgs/crestfactor-5.jpg',
-                'imgs/crestfactor-9.jpg',
-                'imgs/crestfactor-13.jpg'
-            ],
-            name: 'Sweat',
-            size: 'S  M  L  XL',
-            price: 'CAD: 60$',
-            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis vitae ea, facere commodi nam magni eos esse ullam dignissimos molestias! Repellat architecto necessitatibus voluptatibus libero facilis quos consequuntur minus maiores.'
-        },
-
-        {
-            images: [
-                'imgs/crestfactor-13.jpg',
-                'imgs/crestfactor-32.jpg',
-                'imgs/crestfactor-26.jpg'
-            ],
-            name: 'Hoodie',
-            size: 'S  M  L  XL',
-            price: 'CAD: 66$',
-            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis vitae ea, facere commodi nam magni eos esse ullam dignissimos molestias! Repellat architecto necessitatibus voluptatibus libero facilis quos consequuntur minus maiores.'
-        },
-    ];
-
-
-    let product;
-
-    function openModal(index) {
-        document.getElementById('myModal').style.display = 'block';
-        currentSlide = 0; 
-        product = products[index];
-        updateModalContent();
-    }
-
-    function closeModal() {
-        document.getElementById('myModal').style.display = 'none';
-    }
-
-    window.addEventListener('click', (event) => {
-        const modal = document.getElementById('myModal'); // modal変数をここで定義
-        if (event.target === modal) {
-            closeModal();
+        error: function (error) {
+            // エラー時の処理
+            console.error('Error fetching data:', error);
         }
     });
+}
 
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + product.images.length) % product.images.length;
-        updateCarousel();
-    }
 
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % product.images.length;
-        updateCarousel();
-    }
 
-    function updateCarousel() {
-        carousel.innerHTML = `<img src="${product.images[currentSlide]}" alt="Product Image">`;
-    }
 
-    function updateModalContent() {
-        updateCarousel();
-        modalText.textContent = product.name;
-        modalSize.textContent = product.size;
-        modalPrice.textContent = product.price;
-        modalDescription.textContent = product.description;
-    }
 
-    productImages.forEach((productImage, index) => {
-        productImage.addEventListener('click', () => {
-            openModal(index);
+function displayProducts() {
+    const productSection = document.querySelector('.product-section');
+
+    // 商品情報をループして表示
+    products.forEach((product) => {
+        const productDiv = document.createElement('div');
+        productDiv.innerHTML = `
+            <img class="product" src="${product.images[0]}">
+            <p>${product.name}</p>
+            <p>${product.price}</p>
+        `;
+
+        // 商品情報を product-section に追加
+        productSection.appendChild(productDiv);
+
+        // 商品ごとのクリックイベントを設定
+        productDiv.addEventListener('click', () => {
+            openModal(product);
         });
     });
 }
+
+
+
+function displayModal(product) {
+    const modalText = document.getElementById('modal-text');
+    const modalSize = document.getElementById('modal-size');
+    const modalPrice = document.getElementById('modal-price');
+    const modalDescription = document.getElementById('modal-description');
+
+
+    modalText.textContent = `Name: ${product.name}`;
+    modalSize.textContent = `Size: ${product.size}`;
+    modalPrice.textContent = `Price: ${product.price}`;
+    modalDescription.textContent = `Description: ${product.description}`;
+}
+
+
+fetchProductData();
+
+let currentProduct; // 選択された商品情報を保存する変数
+let currentSlideIndex = 0; // 現在のスライドのインデックス
+
+
+function openModal(product) {
+    currentSlideIndex = 0; // モーダルを開いたときにスライドを最初の画像にリセット
+    currentProduct = product; // 選択された商品情報を保存
+    document.getElementById('myModal').style.display = 'block';
+    displayModal(product); // 選択された商品情報を表示
+    updateCarouselImages(product.images, currentSlideIndex); // 商品に関連する画像を表示
+}
+
+function prevSlide() {
+    if (currentSlideIndex > 0) {
+        currentSlideIndex--;
+    } else {
+        currentSlideIndex = currentProduct.images.length - 1; // 最後の画像に戻る
+    }
+    updateCarouselImages(currentProduct.images, currentSlideIndex);
+}
+
+function nextSlide() {
+    if (currentSlideIndex < currentProduct.images.length - 1) {
+        currentSlideIndex++;
+    } else {
+        currentSlideIndex = 0; // 最初の画像に戻る
+    }
+    updateCarouselImages(currentProduct.images, currentSlideIndex);
+}
+
+function updateCarouselImages(images, index) {
+    const carousel = document.querySelector('.carousel');
+    const img = document.createElement('img');
+    img.src = 'http://localhost:5000/' + images[index];
+    img.alt = 'Product Image';
+    carousel.innerHTML = ''; // カルーセルをクリア
+    carousel.appendChild(img);
+}
+
+
+function closeModal() {
+    document.getElementById('myModal').style.display = 'none';
+}
+
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('myModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+});
 
 
 {
@@ -198,7 +175,6 @@
         open.classList.remove('hide');
     });
 }
-
 
 
 
@@ -223,5 +199,3 @@
         close.click();
     });
 }
-
-
