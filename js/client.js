@@ -66,8 +66,6 @@ function fetchProductData() {
 
 
 
-
-
 function displayProducts() {
     const productSection = document.querySelector('.product-section');
 
@@ -75,7 +73,7 @@ function displayProducts() {
     products.forEach((product) => {
         const productDiv = document.createElement('div');
         productDiv.innerHTML = `
-            <img class="product" src="${product.images[0]}">
+            <img class="product" src="http://localhost:3000/${product.images[0]}">
             <p>${product.name}</p>
             <p>${product.price}</p>
         `;
@@ -138,19 +136,23 @@ function nextSlide() {
     updateCarouselImages(currentProduct.images, currentSlideIndex);
 }
 
+
 function updateCarouselImages(images, index) {
     const carousel = document.querySelector('.carousel');
     const img = document.createElement('img');
-    img.src = 'http://localhost:5000/' + images[index];
+    img.src = 'http://localhost:3000/' + images[index];
     img.alt = 'Product Image';
     carousel.innerHTML = ''; // カルーセルをクリア
     carousel.appendChild(img);
 }
 
 
+
 function closeModal() {
     document.getElementById('myModal').style.display = 'none';
 }
+
+
 
 window.addEventListener('click', (event) => {
     const modal = document.getElementById('myModal');
@@ -158,6 +160,12 @@ window.addEventListener('click', (event) => {
         closeModal();
     }
 });
+
+
+
+
+
+
 
 
 {
