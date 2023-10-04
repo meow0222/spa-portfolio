@@ -4,6 +4,7 @@ $(document).ready(function () {
     let count = 0;
     let intervalId;
 
+    // slide for Main img
     function slide() {
         $('#changePic').removeClass('fade-in-out');
         setTimeout(function () {
@@ -38,7 +39,7 @@ $(document).ready(function () {
 
 
 {
-
+    // get products picture from server
     function fetchProductData() {
         $.ajax({
             url: 'http://localhost:3000/data/products',
@@ -57,6 +58,7 @@ $(document).ready(function () {
 
     fetchProductData();
 
+    // after get picture show it on the screen
     function displayProducts() {
         const productSection = document.querySelector('.product-section');
 
@@ -83,6 +85,7 @@ $(document).ready(function () {
     let currentProduct; // 選択された商品情報を保存する変数
 
 
+    // open the Modal when user click the product
     function openModal(product) {
         currentProduct = product;// 選択された商品情報を保存
         currentSlideIndex = 0; // モーダルを開いたときにスライドを最初の画像にリセット
@@ -93,7 +96,7 @@ $(document).ready(function () {
 
 
 
-
+    // put product information after Modal open
     function displayModal(product) {
         const modalText = document.getElementById('modal-text');
         const modalSize = document.getElementById('modal-size');
@@ -107,6 +110,7 @@ $(document).ready(function () {
     }
 
 
+    // Carouse for Product detail
     function updateCarouselImages(images, index) {
         const carousel = document.querySelector('.carousel');
         const img = document.createElement('img');

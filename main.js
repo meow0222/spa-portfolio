@@ -1,11 +1,15 @@
 $(document).ready(function () {
-
+    const login_icon = document.getElementsByClassName('login-icon');
+    const user_name = document.getElementById('userName');
+    
     $('#login-btn').click(function (e) {
         e.preventDefault();
 
         const username = $("input[type='text']").val();
         const password = $("input[type='password']").val()
-
+        const open = document.getElementById('loginIcon');
+        const modal = document.getElementById('modal');
+        const mask = document.getElementById('mask');
         // sessionStorage.setItem('username', username);
         // const storedUsername = sessionStorage.getItem('username');
         // if (storedUsername) {
@@ -28,18 +32,26 @@ $(document).ready(function () {
             success: function (response) {
                 // if a success response is received, print it here:
                 console.log("Response:", response);
+                let result = response.message;
+                currentUser = response.currentUser;
                 // const userName = document.getElementById('userName');
                 // userName.innerText = username;
-                if (response === "Login Successful") {
+                if (result === "Login Successful") {
                     // Redirect to home.html
                     console.log("if condition for Login Successful triggered");
                     // window.location.href = "./index.html";
                     // const usernameFromHeader = xhr.getResponseHeader('username');
                     // const userNameHeader = $('#userName');
                     // userNameHeader.text("Username: " + usernameFromHeader);
+                    modal.classList.add('hidden');
+                    mask.classList.add('hidden');
+                    console.log(login_icon);
+                    console.log(login_icon.length);
+                    for (let i = 0; i < login_icon.length; i++) {
+                        login_icon[i].style.display = 'none';
+                    }
+                    user_name.innerHTML = `${currentUser}`;
                     
-                    
-
                 } else {
                     // Display "Login Failed"
                     alert(response);
@@ -51,6 +63,16 @@ $(document).ready(function () {
         });
 
     });
+
+    $('#logoutIcon').click(function (e){
+        e.preventDefault();
+        console.log('clicked');
+        for (let i = 0; i < login_icon.length; i++) {
+            login_icon[i].style.display = 'block';
+        }
+        user_name.innerHTML = '';
+
+    })
 
     $('#signup-btn').click(function (e) {
         e.preventDefault();
