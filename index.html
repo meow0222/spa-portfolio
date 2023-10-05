@@ -101,13 +101,16 @@
 
             <div id="productContainer" class="product-container">
                 <aside class="side-menu">
-                        <ul>
-                            <li><a href="">Tees</a></li>
-                            <li><a href="">Sweats</a></li>
-                            <li><a href="">Outerwear</a></li>
-                            <li><a href="">Headwear</a></li>
-                            <li><a href="">Accessories</a></li>
-                        </ul>
+                        <div class="serch-section flex justify-between">
+                            <div class="flex gap-2">
+                                <img src="imgs/search.svg" alt="Products serch icon">        
+                                <input type="text" id="search-input" placeholder="Search by Name">
+                            </div>                
+                            <select id="sort-select">
+                                <option value="name">Sort by Name</option>
+                                <option value="price">Sort by Price</option>
+                            </select>
+                        </div>
                 </aside>
                 <section class="product-section">
                     
