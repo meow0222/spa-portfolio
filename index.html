@@ -42,9 +42,13 @@
         <div class="overlay">
             <span class="material-icons" id="close">close</span>
             <div class="sp-icons">
-                <img class="sp-icon" src="imgs/shopping_cart.svg" alt="shopping icon">
+                <input type="checkbox" id="cartCheck">
+                <label for="cartCheck">
+                    <img class="sp-icon" src="imgs/shopping_cart.svg" alt="shopping icon">
+                </label>
                 <img class="sp-icon login-icon" src="imgs/login.svg" alt="login icon">
             </div>
+
             <nav>
                 <ul>
                     <li><a href="pages/product.html">Product</a></li>
@@ -66,7 +70,7 @@
             </div>
         </div>
 
-
+        <div class="cart"></div>
 
         
         <main class="main-section">
@@ -243,6 +247,7 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script src="./js/client.js"></script>
+        <script src="./js/cart.js"></script>
         <script src="./main.js"></script>
 
     </body>
