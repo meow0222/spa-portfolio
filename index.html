@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Crest Factor</title>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/cart.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="icon" href="favicon.ico">
         <script src="https://cdn.tailwindcss.com"></script>
@@ -42,10 +43,7 @@
         <div class="overlay">
             <span class="material-icons" id="close">close</span>
             <div class="sp-icons">
-                <input type="checkbox" id="cartCheck">
-                <label for="cartCheck">
-                    <img class="sp-icon" src="imgs/shopping_cart.svg" alt="shopping icon">
-                </label>
+                <img class="sp-icon" src="imgs/shopping_cart.svg" alt="shopping icon">
                 <img class="sp-icon login-icon" src="imgs/login.svg" alt="login icon">
             </div>
 
@@ -70,20 +68,21 @@
             </div>
         </div>
 
-        <div class="cart"></div>
-
-        
         <main class="main-section">
             <div class="main-image">
                 <img id="changePic" class="fade-in" src="imgs/crestfactor-17.jpg" alt="Landing image">
             </div>
             <div class="header-icons pc-menu flex fixed t-2 r-2">
                 <span id="userName"></span>
-                <img id="shppingIcon" class="header-icon ml-4" src="imgs/shopping_cart.svg" alt="shopping icon">
+                <input type="checkbox" id="cartCheck">
+                <label for="cartCheck">
+                    <img id="shopping-cart" class=" header-icon ml-4 login-icon" src="imgs/shopping_cart.svg" alt="shopping cart icon">
+                </label>
                 <img id="loginIcon" class=" header-icon ml-4 login-icon" src="imgs/login.svg" alt="login icon">
                 <img id="logoutIcon" class=" header-icon ml-4" src="imgs/logout.svg" alt="logout icon">
             </div>
 
+            <div class="cart"></div>
             
             <div id="modal" class="hidden">
                 <div class="bg-white p-8 rounded-lg shadow-md w-96 relative">

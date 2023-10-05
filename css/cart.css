@@ -1,0 +1,24 @@
+#cartCheck ~ .cart {
+    height: 0;
+    transition: height 1s;
+}
+
+#cartCheck:checked ~ .cart {
+    height: 200px;
+    transition: height 1s;
+}
+
+.cart {
+    display: flex;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 500px;
+    background-color: #F4F5F6;
+    z-index: 99;
+    height: 200px;
+}
+
+#cartCheck{
+    display: block;
+}
