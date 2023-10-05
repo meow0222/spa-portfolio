@@ -10,13 +10,12 @@
 
 .cart {
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 60px;
     right: 0;
     width: 500px;
     background-color: #F4F5F6;
     z-index: 99;
-    height: 200px;
 }
 
 #cartCheck{
