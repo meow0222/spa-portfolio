@@ -1,10 +1,9 @@
-{
 $(document).ready(function () {
     const slideImg = ["imgs/crestfactor-17.jpg", "imgs/crestfactor-29.jpg", "imgs/crestfactor-36.jpg"];
     let count = 0;
     let intervalId;
 
-    // slide for Main img
+    // Slide for the main image
     function slide() {
         $('#changePic').removeClass('fade-in-out');
         setTimeout(function () {
@@ -16,10 +15,11 @@ $(document).ready(function () {
 
     intervalId = setInterval(slide, 5000);
 
-    
+    // Function to start the slideshow
     // function startSlideShow() {
     // }
 
+    // Function to stop the slideshow
     // function stopSlideShow() {
     //     clearInterval(intervalId);
     // }
@@ -32,25 +32,44 @@ $(document).ready(function () {
     //     }
     // });
 });
-}
-
-
-
-
 
 {
-    // get products picture from server
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get product data and display it
+        fetchProductData();
+
+        // Add an event listener to the search box
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', function () {
+            filterProductsByName(this.value.trim());
+        });
+
+        // Add an event listener to the sort select box
+        const sortSelect = document.getElementById('sort-select');
+        sortSelect.addEventListener('change', function () {
+            const sortBy = this.value;
+            if (sortBy === 'name') {
+                sortProductsByName();
+            } else if (sortBy === 'price') {
+                sortProductsByPrice();
+            }
+        });
+    });
+
+    let products = [];
+
+    // Function to get product data from the server
     function fetchProductData() {
         $.ajax({
             url: 'http://localhost:3000/data/products',
             method: 'GET',
             dataType: 'json',
             success: function (data) {
-                products = data.products; // 商品データの配列
-                displayProducts(); // 商品情報を表示
+                products = data.products; // Array of product data
+                displayProducts(); // Display product information
             },
             error: function (error) {
-                // エラー時の処理
+                // Handle errors
                 console.error('Error fetching data:', error);
             }
         });
@@ -58,45 +77,67 @@ $(document).ready(function () {
 
     fetchProductData();
 
-    // after get picture show it on the screen
-    function displayProducts() {
+    // Function to display products on the screen
+    function displayProducts(filteredProducts) {
         const productSection = document.querySelector('.product-section');
+        productSection.innerHTML = ''; // Clear existing products
 
-        // 商品情報をループして表示
-        products.forEach((product) => {
+        const productsToDisplay = filteredProducts || products;
+
+        productsToDisplay.forEach((product) => {
             const productDiv = document.createElement('div');
             productDiv.innerHTML = `
-            <img class="product" src="http://localhost:3000/${product.images[0]}">
-            <p>${product.name}</p>
-            <p>${product.price}</p>
-        `;
+                <img class="product" src="http://localhost:3000/${product.images[0]}">
+                <p>${product.name}</p>
+                <p>${product.price}</p>
+            `;
 
-            // 商品情報を product-section に追加
+            // Add product information to the product-section
             productSection.appendChild(productDiv);
 
-            // 商品ごとのクリックイベントを設定
+            // Set a click event for each product
             productDiv.addEventListener('click', () => {
                 openModal(product);
             });
         });
     }
 
-
-    let currentProduct; // 選択された商品情報を保存する変数
-
-
-    // open the Modal when user click the product
-    function openModal(product) {
-        currentProduct = product;// 選択された商品情報を保存
-        currentSlideIndex = 0; // モーダルを開いたときにスライドを最初の画像にリセット
-        document.getElementById('myModal').style.display = 'block';
-        displayModal(product); // 選択された商品情報を表示
-        updateCarouselImages(product.images, currentSlideIndex); // 商品に関連する画像を表示
+    // Function to filter products by name
+    function filterProductsByName(keyword) {
+        const filteredProducts = products.filter((product) => {
+            return product.name.toLowerCase().includes(keyword.toLowerCase());
+        });
+        displayProducts(filteredProducts);
     }
 
+    // Function to sort products by name
+    function sortProductsByName() {
+        products.sort((a, b) => {
+            return a.name.localeCompare(b.name);
+        });
+        displayProducts();
+    }
 
+    // Function to sort products by price (ascending)
+    function sortProductsByPrice() {
+        products.sort((a, b) => {
+            return parseFloat(a.price.replace('CAD: ', '').replace('$', '')) - parseFloat(b.price.replace('CAD: ', '').replace('$', ''));
+        });
+        displayProducts();
+    }
 
-    // put product information after Modal open
+    let currentProduct; // Variable to store the selected product information
+
+    // Function to open the modal when a user clicks on a product
+    function openModal(product) {
+        currentProduct = product; // Store the selected product information
+        currentSlideIndex = 0; // Reset the slide to the first image when opening the modal
+        document.getElementById('myModal').style.display = 'block';
+        displayModal(product); // Display the selected product information
+        updateCarouselImages(product.images, currentSlideIndex); // Display images related to the product
+    }
+
+    // Function to display product information in the modal
     function displayModal(product) {
         const modalText = document.getElementById('modal-text');
         const modalSize = document.getElementById('modal-size');
@@ -109,39 +150,37 @@ $(document).ready(function () {
         modalDescription.textContent = `Description: ${product.description}`;
     }
 
-
-    // Carouse for Product detail
+    // Function to update carousel images for product detail
     function updateCarouselImages(images, index) {
         const carousel = document.querySelector('.carousel');
         const img = document.createElement('img');
         img.src = 'http://localhost:3000/' + images[index];
         img.alt = 'Product Image';
-        carousel.innerHTML = ''; // カルーセルをクリア
+        carousel.innerHTML = ''; // Clear the carousel
         carousel.appendChild(img);
     }
 
-
+    // Function to show the next slide in the carousel
     function nextSlide() {
         if (currentSlideIndex < currentProduct.images.length - 1) {
             currentSlideIndex++;
         } else {
-            currentSlideIndex = 0; // 最初の画像に戻る
+            currentSlideIndex = 0; // Return to the first image
         }
         updateCarouselImages(currentProduct.images, currentSlideIndex);
     }
 
-
-
+    // Function to show the previous slide in the carousel
     function prevSlide() {
         if (currentSlideIndex > 0) {
             currentSlideIndex--;
         } else {
-            currentSlideIndex = currentProduct.images.length - 1; // 最後の画像に戻る
+            currentSlideIndex = currentProduct.images.length - 1; // Return to the last image
         }
         updateCarouselImages(currentProduct.images, currentSlideIndex);
     }
 
-
+    // Function to close the modal
     function closeModal() {
         document.getElementById('myModal').style.display = 'none';
     }
@@ -153,9 +192,6 @@ $(document).ready(function () {
         }
     });
 }
-
-
-
 
 
 {
