@@ -27,24 +27,28 @@ function toggleCart() {
     }
 }
 
+const username = 'user1';
+
 function addToCart(id) {
     const qtty = document.getElementById("quantity").value;
+    console.log('Username: ' + username + '\nID: ' + id + '\nQuantity: ' + qtty);
     $.ajax({
         url: "http://localhost:3000/cart",
-        type: 'POST',
+        type: 'PUT',
         headers: {
             "task": "addtocart" // custom header
         },
         data: {
+            username: username,
             id: id,
             quantity: qtty
         },
         success: function (response) {
-            // if a success response is received, print it here:
             console.log("Response:", response);
         },
         error: function (error) {
             console.error("Error:", error);
         }    
     });
+    //window.sessionStorage.getItem('currentUser')
 }
