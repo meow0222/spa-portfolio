@@ -143,11 +143,14 @@ $(document).ready(function () {
         const modalSize = document.getElementById('modal-size');
         const modalPrice = document.getElementById('modal-price');
         const modalDescription = document.getElementById('modal-description');
+        const modalButton = document.getElementById('modal-button');
+        var qtty = document.getElementById('quantity').value;
 
         modalText.textContent = `Name: ${product.name}`;
         modalSize.textContent = `Size: ${product.size}`;
         modalPrice.textContent = `Price: ${product.price}`;
         modalDescription.textContent = `Description: ${product.description}`;
+        modalButton.setAttribute('onclick', `addToCart(${product.id})`);
     }
 
     // Function to update carousel images for product detail
