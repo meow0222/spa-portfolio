@@ -19,5 +19,13 @@
 }
 
 #cartCheck{
-    display: block;
+    display: none;
+}
+
+#shopping-cart, #logoutIcon {
+    display: none;
+}
+
+#quantity {
+    width: 30px;
 }

@@ -50,6 +50,8 @@ $(document).ready(function () {
                     for (let i = 0; i < login_icon.length; i++) {
                         login_icon[i].style.display = 'none';
                     }
+                    document.getElementById('shopping-cart').style.display = 'block';
+                    document.getElementById('logoutIcon').style.display = 'block';
                     user_name.innerHTML = `${currentUser}`;
                     
                 } else {
