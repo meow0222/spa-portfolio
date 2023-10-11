@@ -1,7 +1,18 @@
 $(document).ready(function () {
     const login_icon = document.getElementsByClassName('login-icon');
     const user_name = document.getElementById('userName');
+    var currentUser = '';
     
+    if (window.sessionStorage.getItem('currentUser') != null) {
+        modal.classList.add('hidden');
+        mask.classList.add('hidden');
+        console.log(login_icon);
+        console.log(login_icon.length);
+        for (let i = 0; i < login_icon.length; i++) {
+            login_icon[i].style.display = 'none';
+        }
+        user_name.innerHTML = `${window.sessionStorage.getItem('currentUser')}`;
+    }
     $('#login-btn').click(function (e) {
         e.preventDefault();
 
@@ -18,51 +29,56 @@ $(document).ready(function () {
         // }
         
 
+        console.log(window.sessionStorage.getItem('currentUser'));
+        if (window.localStorage.getItem('currentUser')) {
+            $.ajax({
+                url: "http://localhost:3000/login",
+                type: 'GET',
+                headers: {
+                    "task": "login" // custom header
+                },
+                data: {
+                    username: username,
+                    password: password
+                },
 
-        $.ajax({
-            url: "http://localhost:3000/login",
-            type: 'GET',
-            headers: {
-                "task": "login" // custom header
-            },
-            data: {
-                username: username,
-                password: password
-            },
-            success: function (response) {
-                // if a success response is received, print it here:
-                console.log("Response:", response);
-                let result = response.message;
-                currentUser = response.currentUser;
-                // const userName = document.getElementById('userName');
-                // userName.innerText = username;
-                if (result === "Login Successful") {
-                    // Redirect to home.html
-                    console.log("if condition for Login Successful triggered");
-                    // window.location.href = "./index.html";
-                    // const usernameFromHeader = xhr.getResponseHeader('username');
-                    // const userNameHeader = $('#userName');
-                    // userNameHeader.text("Username: " + usernameFromHeader);
-                    modal.classList.add('hidden');
-                    mask.classList.add('hidden');
-                    console.log(login_icon);
-                    console.log(login_icon.length);
-                    for (let i = 0; i < login_icon.length; i++) {
-                        login_icon[i].style.display = 'none';
+                success: function (response) {
+                    // if a success response is received, print it here:
+                    console.log("Response:", response);
+                    let result = response.message;
+                    currentUser = response.currentUser;
+                    // const userName = document.getElementById('userName');
+                    // userName.innerText = username;
+                    if (result === "Login Successful") {
+                        // Redirect to home.html
+                        console.log("if condition for Login Successful triggered");
+                        // window.location.href = "./index.html";
+                        // const usernameFromHeader = xhr.getResponseHeader('username');
+                        // const userNameHeader = $('#userName');
+                        // userNameHeader.text("Username: " + usernameFromHeader);
+                        modal.classList.add('hidden');
+                        mask.classList.add('hidden');
+                        console.log(login_icon);
+                        console.log(login_icon.length);
+                        for (let i = 0; i < login_icon.length; i++) {
+                            login_icon[i].style.display = 'none';
+                        }
+                        window.sessionStorage.setItem('currentUser',currentUser);
+                        user_name.innerHTML = `${window.sessionStorage.getItem('currentUser')}`;
+                        document.getElementById('shopping-cart').style.display = 'block';
+                        document.getElementById('logoutIcon').style.display = 'block';
+                        
+                    } else {
+                        // Display "Login Failed"
+                        alert(response);
                     }
-                    document.getElementById('shopping-cart').style.display = 'block';
-                    document.getElementById('logoutIcon').style.display = 'block';
-                    user_name.innerHTML = `${currentUser}`;
-                    
-                } else {
-                    // Display "Login Failed"
-                    alert(response);
+                },
+                error: function (error) {
+                    console.error("Error:", error);
+           
                 }
-            },
-            error: function (error) {
-                console.error("Error:", error);
-            }
-        });
+            });
+        }
 
     });
 
@@ -73,7 +89,7 @@ $(document).ready(function () {
             login_icon[i].style.display = 'block';
         }
         user_name.innerHTML = '';
-
+        window.sessionStorage.clear();
     })
 
     $('#signup-btn').click(function (e) {
