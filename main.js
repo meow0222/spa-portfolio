@@ -1,6 +1,8 @@
 $(document).ready(function () {
     const login_icon = document.getElementsByClassName('login-icon');
     const user_name = document.getElementById('userName');
+    var currentUser = '';
+    
     if (window.sessionStorage.getItem('currentUser') != null) {
         modal.classList.add('hidden');
         mask.classList.add('hidden');
