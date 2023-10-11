@@ -18,19 +18,19 @@
             <div class="header-logo">
                 <a href="#"><img class="header-img" src="imgs/logo-1.png" alt="Brand logo"></a>
                 <div class="sp-menu">
-                    <span class="material-icons" id="open">menu</span>
+                    <span class="material-icons hamburger" id="open">menu</span>
                 </div>
             </div>
             <div>
                 <nav class="pc-menu">
-                    <ul class="nav-links pb-14">
+                    <ul class="nav-links">
                         <li><a href="#productContainer">Product</a></li>
                         <li><a href="#featuresContainer">Features</a></li>
                         <li><a href="#contactContainer">Contact</a></li>
                     </ul>
                 </nav>
             </div>
-            <div>
+            <div class="nav-sns">
                 <ul class="flex gap-2">
                     <li><a href="#"><img class="w-6 hover:-translate-y-2 duration-300" src="imgs/instagram.svg" alt="My Instagram account"></a></li>
                     <li><a href="#"><img class="w-6 hover:-translate-y-2 duration-300" src="imgs/twitter.svg" alt="My Twitter account"></a></li>
@@ -42,16 +42,12 @@
 
         <div class="overlay">
             <span class="material-icons" id="close">close</span>
-            <div class="sp-icons">
-                <img class="sp-icon" src="imgs/shopping_cart.svg" alt="shopping icon">
-                <img class="sp-icon login-icon" src="imgs/login.svg" alt="login icon">
-            </div>
 
             <nav>
                 <ul>
-                    <li><a href="pages/product.html">Product</a></li>
-                    <li><a href="pages/features.html">Features</a></li>
-                    <li><a href="pages/contact.html">Contact</a></li>
+                    <li><a href="#productContainer">Product</a></li>
+                    <li><a href="#featuresContainer">Features</a></li>
+                    <li><a href="#contactContainer">Contact</a></li>
                 </ul>
             </nav>
             <div class="sp-footer">
@@ -82,12 +78,15 @@
                 <img id="logoutIcon" class=" header-icon ml-4" src="imgs/logout.svg" alt="logout icon">
             </div>
 
-            <div class="cart">
-                <ul id="cartList">
-
-                </ul>
+            <div class="overlay-cart">
+                <span class="material-icons" id="cart-close">close</span>
+                <div class="cart">
+                    <ul id="cartList">
+                        
+                    </ul>
+                </div>
             </div>
-            
+
             <div id="modal" class="hidden">
                 <div class="bg-white p-8 rounded-lg shadow-md w-96 relative">
                     <h2 class="text-2xl font-bold mb-4">Login</h2>
@@ -120,7 +119,7 @@
                         </div>
                 </aside>
                 <section class="product-section">
-                    
+
                 </section>
             </div>
 
@@ -140,7 +139,7 @@
                         <p id="modal-size"></p>
                         <p id="modal-price"></p>
                         <p id="modal-description"></p>
-                        <button id="modal-button">Add <input type="number" id="quantity" min="1" max="5"> to Cart </button>
+                        <button id="modal-button">Add<input type="number" id="quantity" min="1" max="5"></button>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,6 @@ function toggleCart() {
                 clearInterval(id);
             } else {
                 pos++;
-                $('.cart').css('height', pos+'px');
             }
         }
     } else {
@@ -21,7 +20,6 @@ function toggleCart() {
                 clearInterval(id);
             } else {
                 pos--;
-                $('.cart').css('height', pos+'px');
             }
         }
     }
