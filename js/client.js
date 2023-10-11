@@ -88,8 +88,8 @@ $(document).ready(function () {
             const productDiv = document.createElement('div');
             productDiv.innerHTML = `
                 <img class="product" src="http://localhost:3000/${product.images[0]}">
-                <p>${product.name}</p>
-                <p>${product.price}</p>
+                <p class="product-name">${product.name}</p>
+                <p class="product-price">${product.price}</p>
             `;
 
             // Add product information to the product-section
@@ -216,7 +216,6 @@ $(document).ready(function () {
 
 
 {
-
     const open = document.getElementById('loginIcon');
     const close = document.getElementById('closeIcon');
     const modal = document.getElementById('modal');
@@ -234,5 +233,21 @@ $(document).ready(function () {
 
     mask.addEventListener('click', () => {
         close.click();
+    });
+}
+
+{
+    const open = document.getElementById('shopping-cart');
+    const overlay = document.querySelector('.overlay-cart');
+    const close = document.getElementById('cart-close');
+
+    open.addEventListener('click', () => {
+        overlay.classList.add('show');
+        open.classList.add('hide');
+    });
+
+    close.addEventListener('click', () => {
+        overlay.classList.remove('show');
+        open.classList.remove('hide');
     });
 }
