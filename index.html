@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Crest Factor</title>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/cart.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="icon" href="favicon.ico">
         <script src="https://cdn.tailwindcss.com"></script>
@@ -45,6 +46,7 @@
                 <img class="sp-icon" src="imgs/shopping_cart.svg" alt="shopping icon">
                 <img class="sp-icon login-icon" src="imgs/login.svg" alt="login icon">
             </div>
+
             <nav>
                 <ul>
                     <li><a href="pages/product.html">Product</a></li>
@@ -66,20 +68,25 @@
             </div>
         </div>
 
-
-
-        
         <main class="main-section">
             <div class="main-image">
                 <img id="changePic" class="fade-in" src="imgs/crestfactor-17.jpg" alt="Landing image">
             </div>
             <div class="header-icons pc-menu flex fixed t-2 r-2">
                 <span id="userName"></span>
-                <img id="shppingIcon" class="header-icon ml-4" src="imgs/shopping_cart.svg" alt="shopping icon">
+                <input type="checkbox" id="cartCheck" onchange="toggleCart()">
+                <label for="cartCheck">
+                    <img id="shopping-cart" class=" header-icon ml-4 login-icon" src="imgs/shopping_cart.svg" alt="shopping cart icon">
+                </label>
                 <img id="loginIcon" class=" header-icon ml-4 login-icon" src="imgs/login.svg" alt="login icon">
                 <img id="logoutIcon" class=" header-icon ml-4" src="imgs/logout.svg" alt="logout icon">
             </div>
 
+            <div class="cart">
+                <ul id="cartList">
+
+                </ul>
+            </div>
             
             <div id="modal" class="hidden">
                 <div class="bg-white p-8 rounded-lg shadow-md w-96 relative">
@@ -101,13 +108,16 @@
 
             <div id="productContainer" class="product-container">
                 <aside class="side-menu">
-                        <ul>
-                            <li><a href="">Tees</a></li>
-                            <li><a href="">Sweats</a></li>
-                            <li><a href="">Outerwear</a></li>
-                            <li><a href="">Headwear</a></li>
-                            <li><a href="">Accessories</a></li>
-                        </ul>
+                        <div class="serch-section flex justify-between">
+                            <div class="flex gap-2">
+                                <img src="imgs/search.svg" alt="Products serch icon">        
+                                <input type="text" id="search-input" placeholder="Search by Name">
+                            </div>                
+                            <select id="sort-select">
+                                <option value="name">Sort by Name</option>
+                                <option value="price">Sort by Price</option>
+                            </select>
+                        </div>
                 </aside>
                 <section class="product-section">
                     
@@ -130,6 +140,7 @@
                         <p id="modal-size"></p>
                         <p id="modal-price"></p>
                         <p id="modal-description"></p>
+                        <button id="modal-button">Add <input type="number" id="quantity" min="1" max="5"> to Cart </button>
                     </div>
                 </div>
             </div>
@@ -243,6 +254,7 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script src="./js/client.js"></script>
+        <script src="./js/cart.js"></script>
         <script src="./main.js"></script>
 
     </body>

@@ -65,6 +65,8 @@ $(document).ready(function () {
                         }
                         window.sessionStorage.setItem('currentUser',currentUser);
                         user_name.innerHTML = `${window.sessionStorage.getItem('currentUser')}`;
+                        document.getElementById('shopping-cart').style.display = 'block';
+                        document.getElementById('logoutIcon').style.display = 'block';
                         
                     } else {
                         // Display "Login Failed"
@@ -73,6 +75,7 @@ $(document).ready(function () {
                 },
                 error: function (error) {
                     console.error("Error:", error);
+           
                 }
             });
         }
