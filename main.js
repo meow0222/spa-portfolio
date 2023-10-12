@@ -3,11 +3,11 @@ $(document).ready(function () {
     const user_name = document.getElementById('userName');
     var currentUser = '';
     
-    if (window.sessionStorage.getItem('currentUser') != null) {
+    if (window.sessionStorage.getItem('currentUser') != '' & window.sessionStorage.getItem('currentUser') != null) {
         modal.classList.add('hidden');
         mask.classList.add('hidden');
-        console.log(login_icon);
-        console.log(login_icon.length);
+        document.getElementById('logoutIcon').style.display = 'block';
+        document.getElementById('shopping-cart').style.display = 'block';
         for (let i = 0; i < login_icon.length; i++) {
             login_icon[i].style.display = 'none';
         }
@@ -64,6 +64,7 @@ $(document).ready(function () {
                         console.log(login_icon);
                         console.log(login_icon.length);
                         document.getElementById('loginIcon').style.display = 'none';
+
                         window.sessionStorage.setItem('currentUser',currentUser);
                         user_name.innerHTML = `${window.sessionStorage.getItem('currentUser')}`;
                         document.getElementById('shopping-cart').style.display = 'block';
@@ -90,6 +91,8 @@ $(document).ready(function () {
             login_icon[i].style.display = 'block';
         }
         user_name.innerHTML = '';
+        document.getElementById('shopping-cart').style.display = 'none';
+        document.getElementById('logoutIcon').style.display = 'none';
         window.sessionStorage.clear();
         document.getElementById('shopping-cart').style.display = 'none';
         document.getElementById('logoutIcon').style.display = 'none';

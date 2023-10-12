@@ -61,7 +61,6 @@ header {
     top: 1rem;
     right: 2rem;
     cursor: pointer;
-    z-index: 1200;
 }
 
 .header-icon {
@@ -188,7 +187,7 @@ header {
 }
 
 .side-menu {
-    padding: 1rem 3rem;
+    padding: 10px;
     background-color: #F4F5F6;
     
 }
@@ -272,7 +271,7 @@ header {
     background-color: #fefefe;
     margin: 3rem 6rem;
     padding: 2.5rem 3rem;
-    position: relative
+    position: relative;
 }
 
 
@@ -337,78 +336,6 @@ header {
     color: #777;
 }
 
-
-
-#shopping-cart {
-    cursor: pointer;
-}
-
-
-.overlay-cart {
-    display: block;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: rgba(255, 255, 255, 0.95);
-    text-align: center;
-    padding: 4rem 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .6s;
-    z-index: 1000;
-}
-
-.overlay-cart.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-#cart-close {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    font-size: 32px;
-    cursor: pointer;
-}
-
-.overlay-cart ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 24px;
-}
-
-.overlay-cart li {
-    margin-top: 24px;
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity .3s, transform .3s;
-}
-
-.overlay-cart img {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity .3s, transform .3s;
-}
-
-.overlay-cart.show li {
-    opacity: 1;
-    transform: none;
-}
-
-.overlay-cart.show li:nth-child(1) {
-    transition-delay: .1s;
-}
-
-.overlay-cart.show li:nth-child(2) {
-    transition-delay: .2s;
-}
-
-.overlay-cart.show li:nth-child(3) {
-    transition-delay: .3s;
-}
 
 
 
@@ -655,31 +582,12 @@ input[type="submit"] {
 @media (max-width: 767px) {
     
 /* ----------------------------------- HEADER ----------------------------------- */
-    body {
-        margin: 0;
-        padding: 0;
-    }
+
 
     header {
-        flex-direction: row;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        width: 100vw;
-        height: auto;
-        background-color: #F4F5F6;
         border-bottom: solid 0.5px #d8d8d8;
-        z-index: 900;
     }
 
-
-    .nav-sns {
-        display: none;
-    }
-    
-    .hamburger {
-        margin-left: 13rem
-    }
 
     .sp-menu {
         display: block;
@@ -887,38 +795,8 @@ input[type="submit"] {
     }
 }
 
-
+/* タブレット向けのスタイル */
 @media (min-width: 768px) and (max-width: 1023px) {
-
-    body {
-        margin: 0;
-        padding: 0;
-    }
-
-
-    header {
-        flex-direction: row;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        width: 100vw;
-        height: auto;
-        background-color: #F4F5F6;
-        border-bottom: solid 0.5px #d8d8d8;
-        z-index: 900;
-    }
-
-    .nav-links {
-        flex-direction: row;
-        align-items: center;
-        margin-right: 24rem;
-    }
-
-
-    .nav-sns {
-        display: none;
-    }
-    
 
     .main-image{
         height: 80%;
@@ -929,8 +807,6 @@ input[type="submit"] {
         height: 100%;
         width: 100%;
     }
-
-    
 
 
 
@@ -959,6 +835,8 @@ input[type="submit"] {
     }
     
 }
+
+
 
 
 
