@@ -12,6 +12,9 @@ $(document).ready(function () {
             login_icon[i].style.display = 'none';
         }
         user_name.innerHTML = `${window.sessionStorage.getItem('currentUser')}`;
+    } else {
+        document.getElementById('shopping-cart').style.display = 'none';
+        document.getElementById('logoutIcon').style.display = 'none';
     }
     $('#login-btn').click(function (e) {
         e.preventDefault();
@@ -30,7 +33,7 @@ $(document).ready(function () {
         
 
         console.log(window.sessionStorage.getItem('currentUser'));
-        if (window.localStorage.getItem('currentUser')) {
+        if (!window.localStorage.getItem('currentUser')) {
             $.ajax({
                 url: "http://localhost:3000/login",
                 type: 'GET',
@@ -60,9 +63,7 @@ $(document).ready(function () {
                         mask.classList.add('hidden');
                         console.log(login_icon);
                         console.log(login_icon.length);
-                        for (let i = 0; i < login_icon.length; i++) {
-                            login_icon[i].style.display = 'none';
-                        }
+                        document.getElementById('loginIcon').style.display = 'none';
                         window.sessionStorage.setItem('currentUser',currentUser);
                         user_name.innerHTML = `${window.sessionStorage.getItem('currentUser')}`;
                         document.getElementById('shopping-cart').style.display = 'block';
@@ -90,6 +91,9 @@ $(document).ready(function () {
         }
         user_name.innerHTML = '';
         window.sessionStorage.clear();
+        document.getElementById('shopping-cart').style.display = 'none';
+        document.getElementById('logoutIcon').style.display = 'none';
+        document.getElementById('loginIcon').style.display = 'block';
     })
 
     $('#signup-btn').click(function (e) {

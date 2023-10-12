@@ -8,24 +8,19 @@
     transition: height 1s;
 }
 
-.cart {
-    display: flex;
-    position: fixed;
-    top: 60px;
-    right: 0;
-    width: 500px;
-    background-color: #F4F5F6;
-    z-index: 99;
-}
-
 #cartCheck{
-    display: none;
-}
-
-#shopping-cart, #logoutIcon {
     display: none;
 }
 
 #quantity {
     width: 30px;
+}
+
+#productCart {
+    display: flex;
+}
+
+#productCart img {
+    height: 20px;
+    cursor: pointer;
 }
