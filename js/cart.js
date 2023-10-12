@@ -72,16 +72,17 @@ function rmFromCart(id) {
 $('#shopping-cart').click(() => {
     const username = window.sessionStorage.getItem('currentUser');
     $.ajax({
-        url: "http://localhost:3000/cart",
+        url: `http://localhost:3000/cart?username=${username}`,
         type: 'GET',
         headers: {
             "task": "loadcart"
         },
-        data: {
-            username: username
-        },
+        dataType: 'json',
         success: function (response) {
             console.log("Response:", response);
+            for(let i = 0; i < response.length; i++){
+                $('#cartList').append(response[i]);
+            }
         },
         error: function (error) {
             console.error("Error:", error);
